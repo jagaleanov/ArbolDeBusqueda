@@ -158,11 +158,9 @@ class Lista {
 class Arbol {
 
     raiz;
-
     inOrdenList;
     preOrdenList;
     posOrdenList;
-
     nivelesDesorden;
     nivelesOrden;
 
