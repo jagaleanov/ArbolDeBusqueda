@@ -193,7 +193,6 @@ class Arbol {
     }
 
     compararNodo(referencia, nuevo) {
-
         var direccion = this.compararValor(referencia, nuevo);
 
         if (direccion === 0) {
@@ -270,7 +269,6 @@ class Arbol {
         var level = "";
         this.nivelesDesorden = [];
         this.nivelesOrden = [];
-        //console.log(this.nivelesDesorden);
         this.niveles(this.getRaiz(), 1);
         
         //ORDENAR POR NIVELES
@@ -354,7 +352,6 @@ class Arbol {
     eliminar(raiz, valor) {
 
         if (raiz !== null) {
-
             if (valor > raiz.getValor()) {
                 this.eliminar(raiz.getDerecha(), valor);
             } else if (valor < raiz.getValor()) {
@@ -368,21 +365,11 @@ class Arbol {
 
                 if (hijoDerechaRaiz !== null) {//si el valor a eliminar tiene hijo derecho
                     var inOrdenVal = this.inOrdenList.getNextTo(valor).getValue();
-
-                    console.log("el valor inorden es " + inOrdenVal);
+                    
                     //INORDEN
-                    console.log("el arbol inicial es ");
-                    console.log(this.raiz);
                     var nodoInOrden = this.buscar(this.raiz, inOrdenVal);
-                    console.log("el nodo inorden es ");
-                    console.log(nodoInOrden);
-
                     var hijoDerechaInOrden = nodoInOrden.getDerecha();
                     var padreInOrden = nodoInOrden.getPadre();
-                    //console.log("El nodoInOrden es ");
-                    //console.log(nodoInOrden);
-                    console.log("El arbol inicial es ");
-                    console.log(this.raiz);
 
                     //llevar nodo izquierdo de raiz a inorden
                     nodoInOrden.setIzquierda(hijoIzquierdaRaiz);
@@ -404,7 +391,8 @@ class Arbol {
                             hijoDerechaInOrden.setPadre(padreInOrden);
                         }
                     }
-
+                    
+                    //poner ekl inorden como hijo del padre del nodo eliminado
                     nodoInOrden.setPadre(padreRaiz);
                     if (padreRaiz !== null) {
                         nodoInOrden.setPadre(padreRaiz);
@@ -414,38 +402,26 @@ class Arbol {
                             padreRaiz.setDerecha(nodoInOrden);
                         }
                     }
-
+                    
+                    //Buscar la raiz del arbol para reemplzar la antgua raiz y renovar el arbol
                     var nuevaRaiz = nodoInOrden;
-
                     while (nuevaRaiz.getPadre() !== null) {
                         nuevaRaiz = nuevaRaiz.getPadre();
                     }
 
                     this.raiz = nuevaRaiz;
-                    console.log("El nuevo arbol es ");
-                    console.log(this.raiz);
 
-                } else if (hijoIzquierdaRaiz !== null) {
+                } else if (hijoIzquierdaRaiz !== null) {//si el valor a eliminar no tiene hijo derecho pero tiene hijo izquierdo
+                    
+                    //subir el nodo izquierdo a la posicion donde estaba el nodo a eliminar
                     hijoIzquierdaRaiz.setPadre(padreRaiz);
                     if (padreRaiz !== null) {
-                        //padreRaiz.setIzquierda(hijoIzquierdaRaiz);
-
-
                         if (parseFloat(padreRaiz.getValor()) > hijoIzquierdaRaiz.getValor()) {
                             padreRaiz.setIzquierda(hijoIzquierdaRaiz);
                         } else {
                             padreRaiz.setDerecha(hijoIzquierdaRaiz);
                         }
                     }
-
-                    var nuevaRaiz = hijoIzquierdaRaiz;
-                    while (nuevaRaiz.getPadre() !== null) {
-                        nuevaRaiz = nuevaRaiz.getPadre();
-                    }
-
-                    this.raiz = nuevaRaiz;
-                    console.log("El nuevo arbol es ");
-                    console.log(this.raiz);
                 } else {//si no tiene hijos
                     if (raiz.getPadre() === null) {//si es la cabeza del arbol
                         this.raiz = null;
@@ -457,7 +433,6 @@ class Arbol {
                         }
                     }
                 }
-                //console.log(this.head);
             }
         }
     }
