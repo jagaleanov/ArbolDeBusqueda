@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Árbol ordenado</title>
+        <title>Árbol de busqueda</title>
 
         <!--CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
@@ -14,22 +14,29 @@
     <body>
         <div class="fluid-container">
             <nav class="avbar navbar-dark bg-dark navbar-expand-lg">
-                <h1 class="navbar-brand mx-4">Árbol ordenado</h1>
+                <h1 class="navbar-brand mx-4">Árbol de busqueda</h1>
             </nav>
             <div class="card mx-4">
                 <div class="card-body">
-                    <h5 class="card-title">Entrada de datos</h5>
 
                     <div class="row">
-                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <label for="numberTxt" >Ingrese un número al árbol</label>
-                            <input type="number" name="numberTxt" id="numberTxt" class="form-control" value="" 
-                                   autocomplete="off"  required>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <input type="button" id="submitTree" class="btn btn-primary btn-block" value="Ingresar" onclick="addNode()">
+                        <h5 class="card-title">Entrada de datos</h5>
+                            <div class="form-group">
+                                <label for="numberTxt" >Ingrese un número al árbol</label>
+                                <input type="number" name="numberTxt" id="numberTxt" class="form-control" value="" 
+                                       autocomplete="off"  required>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" id="submitTree" class="btn btn-primary btn-block" value="Ingresar" onclick="addNode()">
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <h5 class="card-title">Recorridos</h5>
+                            <h6>Niveles:&nbsp;&nbsp;<span id="levelString"></span></h6>
+                            <h6>Preorden:&nbsp;&nbsp;<span id="preOrdenString"></span></h6>
+                            <h6>Inorden:&nbsp;&nbsp;<span id="inOrdenString"></span></h6>
+                            <h6>Postorden:&nbsp;&nbsp;<span id="posOrdenString"></span></h6>
                         </div>
                     </div>
                 </div>
@@ -37,10 +44,6 @@
             <div class="card mx-4 mt-4">
                 <div class="card-body ">
                     <h5 class="card-title">Árbol generado</h5>
-                    <h6>Preorden: <span id="preOrdenString"></span></h6>
-                    <h6>Inorden: <span id="inOrdenString"></span></h6>
-                    <h6>Postorden: <span id="posOrdenString"></span></h6>
-                    <h6>Niveles: <span id="levelString"></span></h6>
                     <div class="tree">
                         <ul id="treeUl">
                             <!--
