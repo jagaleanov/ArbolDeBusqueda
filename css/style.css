@@ -87,8 +87,7 @@ body{
     color: #fff; 
 }
 
-/*Time for some hover effects*/
-/*We will apply the hover effect the the lineage of the element also*/
+/*Efectos mouse over*/
 .tree li div:hover, .tree li div:hover+ul li div {
     background: #e47600; 
     border: 1px solid #94a0b4;
