@@ -278,7 +278,7 @@ class Arbol {
             }
         }
 
-        this.nivelesOrden.forEach(elemento => level += elemento + "&nbsp;&nbsp;");
+        this.nivelesOrden.forEach(elemento => level += elemento + " &nbsp;&nbsp;");
 
         return level;
     }
